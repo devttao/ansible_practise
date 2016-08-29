@@ -1,0 +1,7 @@
+# playbook.yml
+---
+- hosts: local  # hosts中指定
+  remote_user: the5fire  # 如果和当前用户一样，则无需指定
+  tasks:
+    - name: whoami
+      shell: 'whoami > whoami.rst'
