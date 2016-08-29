@@ -1,11 +1,11 @@
 ---
 - hosts: local  # hosts中指定
-  remote_user: the5fire  # 如果和当前用户一样，则无需指定
+  remote_user: fabric  # 如果和当前用户一样，则无需指定
   tasks:
       - name: whoami
-        copy: src=~/hosts dest=~/hosts.dest  #  本地拷贝到远端
-        notify:  # 如果copy执行完之后~/hosts.dest文件发送了变化，则执行
+        copy: src=/etc/hosts dest=/home/fabric/hosts.dest  #  本地拷贝到远端
+        notify:  # 如果copy执行完之后~/hosts.dest文件发生了变化，则执行
             - clear copy  # 调用handler
   handlers:
       - name: clear copy
-        shell: 'mv ~/hosts.dest hosts.del'  # 假装删除
+        shell: 'mv /home/fabric/hosts.dest /home/fabric/hosts.del'  # 假装删除
