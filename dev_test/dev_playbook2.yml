@@ -1,6 +1,7 @@
 ---
 - hosts: local  # hosts中指定
   remote_user: fabric  # 如果和当前用户一样，则无需指定
+  sudo: yes
   tasks:
       - name: whoami
         copy: src=/etc/hosts dest=/home/fabric/hosts.dest  #  本地拷贝到远端
